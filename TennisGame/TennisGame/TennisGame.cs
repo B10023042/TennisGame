@@ -1,4 +1,6 @@
-﻿namespace TennisGame
+﻿using System;
+
+namespace TennisGame
 {
     public class TennisGame
     {
@@ -11,7 +13,8 @@
 
         public string ScoreResult(int gameId)
         {
-            return "";
+            var game = _repo.GetGame(gameId);
+            return game.IsSameScore() ? game.GetSameScoreResult() : game.GameDiffScoreResult();
         }
     }
 }
